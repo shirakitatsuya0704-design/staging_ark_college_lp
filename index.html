@@ -157,54 +157,55 @@
                     </header>
 
                     {/* FV: Editorial & Glass Layout */}
-                    <section className="relative w-full min-h-[95svh] flex flex-col lg:flex-row items-center justify-center pt-20 lg:pt-0">
+                    <section className="relative w-full min-h-[100svh] flex flex-col lg:flex-row items-center justify-center pt-20 lg:pt-0">
                         
                         {/* 1. Background Image Area */}
-                        {/* PC: 全画面背景だが、左側に人物を寄せる / Mobile: 上部60%を占める */}
-                        <div className="absolute top-0 left-0 w-full h-[65svh] lg:h-full lg:w-[60%] lg:left-0 overflow-hidden z-0">
+                        {/* Mobile: 高さ48svhに短縮して、下のカードスペースを確保 */}
+                        <div className="absolute top-0 left-0 w-full h-[48svh] lg:h-full lg:w-[60%] lg:left-0 overflow-hidden z-0">
                              <img 
                                 src="president.png" 
                                 alt="President" 
                                 className="w-full h-full object-cover object-top lg:object-center shadow-2xl" 
                              />
-                             {/* Mobile用のグラデーション: 下部を白にフェードさせてカードとの繋がりを作る */}
-                             <div className="lg:hidden absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F8FAFC] to-transparent"></div>
+                             {/* Mobile用グラデーション */}
+                             <div className="lg:hidden absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8FAFC] to-transparent"></div>
                         </div>
 
                         {/* 2. Content Area (Floating Glass Card) */}
-                        {/* PC: 右側に配置し、画像と少し重ねる (Negative Margin left) / Mobile: 下から上に重ねる (Negative Margin top) */}
+                        {/* Mobile: mt-[35svh] で写真と大胆に重ねる */}
                         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row lg:justify-end items-center lg:items-center h-full">
                             
                             {/* Glass Card */}
-                            <div className="w-full lg:w-[550px] mt-[50svh] lg:mt-0 lg:-ml-20 glass-panel rounded-[40px] p-8 sm:p-14 shadow-glow-card transform transition-all hover:scale-[1.01] duration-700">
+                            {/* Mobile調整: mt-[35svh], p-6, 中身の文字サイズやマージンを圧縮 */}
+                            <div className="w-full lg:w-[550px] mt-[35svh] lg:mt-0 lg:-ml-20 glass-panel rounded-[40px] p-6 sm:p-14 shadow-glow-card transform transition-all hover:scale-[1.01] duration-700">
                                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-cta/10 rounded-full blur-3xl animate-pulse"></div>
                                 
-                                <span className="inline-block py-1 px-3 rounded-full bg-navy/5 text-navy text-sm font-bold tracking-wider mb-6 border border-navy/10">
+                                <span className="inline-block py-1 px-3 rounded-full bg-navy/5 text-navy text-xs sm:text-sm font-bold tracking-wider mb-4 border border-navy/10">
                                     EST. 2024 TOKYO
                                 </span>
 
-                                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] mb-10 text-navy tracking-tighter drop-shadow-sm">
+                                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6 sm:mb-10 text-navy tracking-tighter drop-shadow-sm">
                                     総合型選抜の、<br />
                                     最強のパートナー、<br />
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-navy to-cta decoration-cta decoration-4 underline-offset-8">Ark College</span>
                                 </h1>
                                 
-                                <div className="space-y-5 mb-12">
+                                <div className="space-y-3 sm:space-y-5 mb-8 sm:mb-12">
                                     {["第一志望合格率 86.7%", "添削回数 完全無制限", "48時間以内 返信確約"].map((text, i) => (
-                                        <div key={i} className="flex items-center space-x-5 group">
-                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cta to-cta-light flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                                <CheckIcon className="w-4 h-4 text-white" />
+                                        <div key={i} className="flex items-center space-x-3 sm:space-x-5 group">
+                                            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-cta to-cta-light flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                                <CheckIcon className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                                             </div>
-                                            <span className="font-bold text-lg sm:text-xl text-navy tracking-tight group-hover:text-cta transition-colors duration-300">{text}</span>
+                                            <span className="font-bold text-base sm:text-xl text-navy tracking-tight group-hover:text-cta transition-colors duration-300">{text}</span>
                                         </div>
                                     ))}
                                 </div>
 
-                                <div className="space-y-6">
-                                    <button onClick={scrollToDiagnosis} className="btn-shine w-full bg-gradient-to-r from-cta to-cta-light text-white text-xl sm:text-2xl font-black py-6 rounded-2xl shadow-glow-cta hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                                <div className="space-y-4">
+                                    <button onClick={scrollToDiagnosis} className="btn-shine w-full bg-gradient-to-r from-cta to-cta-light text-white text-lg sm:text-2xl font-black py-4 sm:py-6 rounded-2xl shadow-glow-cta hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                                         無料合格可能性診断を受ける
                                     </button>
-                                    <p className="text-sm font-bold text-slate-400 text-center tracking-widest uppercase">
+                                    <p className="text-xs sm:text-sm font-bold text-slate-400 text-center tracking-widest uppercase">
                                         Online Diagnosis / No Solicitation
                                     </p>
                                 </div>
