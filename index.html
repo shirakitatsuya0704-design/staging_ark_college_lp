@@ -160,8 +160,8 @@
                     <section className="relative w-full min-h-[100svh] flex flex-col lg:flex-row items-center justify-center pt-20 lg:pt-0">
                         
                         {/* 1. Background Image Area */}
-                        {/* Mobile: 高さ48svhに短縮して、下のカードスペースを確保 */}
-                        <div className="absolute top-0 left-0 w-full h-[48svh] lg:h-full lg:w-[60%] lg:left-0 overflow-hidden z-0">
+                        {/* Mobile: 高さ40svhにさらに短縮して写真を小さく表示 */}
+                        <div className="absolute top-0 left-0 w-full h-[40svh] lg:h-full lg:w-[60%] lg:left-0 overflow-hidden z-0">
                              <img 
                                 src="president.png" 
                                 alt="President" 
@@ -172,12 +172,12 @@
                         </div>
 
                         {/* 2. Content Area (Floating Glass Card) */}
-                        {/* Mobile: mt-[35svh] で写真と大胆に重ねる */}
+                        {/* Mobile: mt-[30svh] に調整して写真との重なりを維持 */}
                         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row lg:justify-end items-center lg:items-center h-full">
                             
                             {/* Glass Card */}
-                            {/* Mobile調整: mt-[35svh], p-6, 中身の文字サイズやマージンを圧縮 */}
-                            <div className="w-full lg:w-[550px] mt-[35svh] lg:mt-0 lg:-ml-20 glass-panel rounded-[40px] p-6 sm:p-14 shadow-glow-card transform transition-all hover:scale-[1.01] duration-700">
+                            {/* Mobile調整: mt-[30svh] に変更 */}
+                            <div className="w-full lg:w-[550px] mt-[30svh] lg:mt-0 lg:-ml-20 glass-panel rounded-[40px] p-6 sm:p-14 shadow-glow-card transform transition-all hover:scale-[1.01] duration-700">
                                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-cta/10 rounded-full blur-3xl animate-pulse"></div>
                                 
                                 <span className="inline-block py-1 px-3 rounded-full bg-navy/5 text-navy text-xs sm:text-sm font-bold tracking-wider mb-4 border border-navy/10">
