@@ -86,39 +86,51 @@
                     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'}`}>
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
                             <div className="flex items-center">
-                                <img src="logo.webp" alt="Ark College" className={`h-8 sm:h-12 w-auto transition-all ${isScrolled ? 'brightness-100' : 'brightness-0 invert'}`} />
+                                {/* ロゴ: PC版FVで背景が写真になるため、スクロール前は白文字・反転ロゴが見えるように調整が必要だが、
+                                    新しいデザインではFV右側が白カードになるため、ヘッダーは常に「カラーロゴ」で見せた方が安全。
+                                    今回は常に「カラー（反転なし）」で表示する設定に変更します。 */}
+                                <img src="logo.webp" alt="Ark College" className="h-8 sm:h-12 w-auto" />
                             </div>
-                            <button onClick={scrollToDiagnosis} className="bg-cta hover:bg-amber-700 text-white font-black py-2.5 px-6 sm:px-8 rounded-lg transition-colors text-sm sm:text-lg shadow-lg active:scale-95">
-                                無料合格可能性診断
-                            </button>
                         </div>
                     </header>
 
-                    {/* FV */}
-                    <section className="relative h-[90svh] w-full overflow-hidden flex flex-col">
-                        <div className="absolute inset-0 bg-cover bg-center z-0 scale-105" style={{ backgroundImage: "url('president.png')" }}>
-                            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80"></div>
+                    {/* FV: New Bright Layout */}
+                    <section className="relative w-full bg-slate-50 flex flex-col lg:block min-h-[90svh]">
+                        {/* Background Image Area */}
+                        {/* Mobile: 上部に表示 / Desktop: 全画面背景 */}
+                        <div className="lg:absolute lg:inset-0 lg:z-0 h-[45vh] sm:h-[55vh] lg:h-full w-full overflow-hidden">
+                             {/* 画像の配置調整: lgでは左側に人物が来るように 'lg:object-[20%_center]' で位置を微調整 */}
+                             <img 
+                                src="president.png" 
+                                alt="President" 
+                                className="w-full h-full object-cover object-top lg:object-[20%_center]" 
+                             />
                         </div>
-                        <div className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white w-full">
-                            <div className="max-w-4xl py-12">
-                                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black leading-[1.2] mb-8 sm:mb-12 tracking-tighter">
+
+                        {/* Content Card Area */}
+                        <div className="relative z-10 flex-1 flex flex-col justify-center lg:h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full -mt-10 lg:mt-0 pb-12 lg:pb-0">
+                            {/* Card Container */}
+                            <div className="bg-white/95 backdrop-blur-md shadow-2xl rounded-[30px] sm:rounded-[40px] p-8 sm:p-12 lg:p-14 lg:max-w-[640px] lg:ml-auto border border-white/50">
+                                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.2] mb-8 text-navy tracking-tighter">
                                     総合型選抜の、<br />
                                     最強のパートナー、<br />
-                                    <span className="text-white underline decoration-cta decoration-4 underline-offset-8">Ark College</span>
+                                    <span className="text-navy underline decoration-cta decoration-4 underline-offset-8">Ark College</span>
                                 </h1>
-                                <div className="space-y-4 sm:space-y-6 mb-10 sm:mb-16">
+                                
+                                <div className="space-y-4 mb-10">
                                     {["第一志望合格率 86.7%", "添削回数 完全無制限", "48時間以内 返信確約"].map((text, i) => (
-                                        <div key={i} className="flex items-center space-x-3 sm:space-x-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-3 sm:p-4 w-fit pr-8 sm:pr-10">
-                                            <div className="bg-cta rounded-full p-1.5 sm:p-2"><CheckIcon className="w-4 h-4 sm:w-6 sm:h-6 text-white" /></div>
-                                            <span className="font-bold text-lg sm:text-2xl tracking-wide">{text}</span>
+                                        <div key={i} className="flex items-center space-x-4 bg-white border-2 border-slate-100 rounded-xl p-4 shadow-sm">
+                                            <div className="bg-cta rounded-full p-1.5 shrink-0"><CheckIcon className="w-4 h-4 text-white" /></div>
+                                            <span className="font-bold text-lg sm:text-xl text-navy tracking-tight">{text}</span>
                                         </div>
                                     ))}
                                 </div>
+
                                 <div className="space-y-4">
-                                    <button onClick={scrollToDiagnosis} className="w-full sm:w-auto bg-cta hover:bg-amber-700 text-white text-xl sm:text-3xl font-black py-5 px-10 sm:py-7 sm:px-16 rounded-xl transition-all shadow-2xl hover:-translate-y-1 active:scale-95">
+                                    <button onClick={scrollToDiagnosis} className="w-full bg-cta hover:bg-amber-700 text-white text-xl sm:text-2xl font-black py-5 rounded-2xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95">
                                         無料合格可能性診断を受ける
                                     </button>
-                                    <p className="text-lg sm:text-xl font-bold opacity-90 pl-1 tracking-widest text-center sm:text-left">
+                                    <p className="text-sm sm:text-base font-bold text-slate-500 text-center">
                                         診断はオンラインで完結 / 強引な勧誘、なし
                                     </p>
                                 </div>
