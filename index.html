@@ -16,19 +16,14 @@
             theme: {
                 extend: {
                     colors: {
-                        // 【維持】深みのある「インテリジェントブルー」
-                        navy: '#1D4ED8', // blue-700 base
-                        'navy-dark': '#1E3A8A', // blue-900
-                        'navy-light': '#EFF6FF', // blue-50
-                        
-                        // 【維持】高級感のある「サンセットオレンジ」
-                        cta: '#EA580C', // orange-600
-                        'cta-light': '#F97316', // orange-500
-                        'cta-soft': '#FFF7ED', // orange-50
-                        
-                        // 【維持】少しグレーを入れた文字色
-                        text: '#334155', // slate-700
-                        'text-dark': '#0F172A', // slate-900
+                        navy: '#1D4ED8',
+                        'navy-dark': '#1E3A8A',
+                        'navy-light': '#EFF6FF',
+                        cta: '#EA580C',
+                        'cta-light': '#F97316',
+                        'cta-soft': '#FFF7ED',
+                        text: '#334155',
+                        'text-dark': '#0F172A',
                     },
                     fontFamily: {
                         sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
@@ -67,12 +62,11 @@
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
             -webkit-font-smoothing: antialiased;
             color: #334155;
-            background-color: #FAFAFA; /* 上質なオフホワイト */
+            background-color: #FAFAFA;
             overflow-x: hidden;
-            letter-spacing: 0.03em; /* ゴシック体に合わせて調整 */
+            letter-spacing: 0.03em;
         }
 
-        /* ノイズテクスチャ */
         .bg-noise {
             position: fixed;
             top: 0;
@@ -85,7 +79,6 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* 上質なグラスモーフィズム */
         .glass-premium {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
@@ -94,7 +87,6 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
         }
 
-        /* ボタン */
         .btn-elegant {
             background: linear-gradient(135deg, #EA580C 0%, #F97316 100%);
             box-shadow: 0 4px 15px rgba(234, 88, 12, 0.2);
@@ -106,7 +98,6 @@
             filter: brightness(1.05);
         }
 
-        /* スクロールアニメーション */
         .reveal-section {
             opacity: 0;
             transform: translateY(30px);
@@ -125,7 +116,6 @@
     <script type="text/babel">
         const { useState, useEffect, useRef, Fragment } = React;
 
-        // --- Animated Component (Scroll Reveal) ---
         const FadeIn = ({ children, delay = 0, className = "" }) => {
             const [isVisible, setIsVisible] = useState(false);
             const domRef = useRef();
@@ -159,7 +149,6 @@
             );
         };
 
-        // --- Icons ---
         const CheckIcon = ({ className = "w-5 h-5" }) => (
             <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"><path strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
         );
@@ -173,7 +162,6 @@
             <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"><path strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
         );
 
-        // --- Main App ---
         const App = () => {
             const [isScrolled, setIsScrolled] = useState(false);
 
@@ -189,7 +177,7 @@
 
             return (
                 <div className="relative min-h-screen text-text">
-                    {/* Background Soft Gradients */}
+                    {/* Background */}
                     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
                         <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-100/40 rounded-full mix-blend-multiply filter blur-[80px] animate-float"></div>
                         <div className="absolute top-[30%] right-[-10%] w-[500px] h-[500px] bg-orange-100/40 rounded-full mix-blend-multiply filter blur-[80px] animate-float" style={{animationDelay: '3s'}}></div>
@@ -205,8 +193,6 @@
 
                     {/* HERO SECTION */}
                     <section className="relative w-full min-h-[100svh] flex flex-col lg:flex-row items-center justify-center pt-24 lg:pt-0 overflow-hidden">
-                        
-                        {/* Image Side */}
                         <div className="absolute top-0 left-0 w-full h-[45svh] lg:h-full lg:w-[55%] z-0">
                             <div className="absolute inset-0 bg-navy/5 z-10 mix-blend-multiply"></div> 
                             <img src="president.png" alt="President" className="w-full h-full object-cover object-top lg:object-center" />
@@ -214,22 +200,17 @@
                             <div className="hidden lg:block absolute top-0 right-0 h-full w-48 bg-gradient-to-l from-[#FAFAFA] to-transparent z-10"></div>
                         </div>
 
-                        {/* Content Side */}
                         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row lg:justify-end items-center h-full">
                             <FadeIn className="w-full lg:w-[620px] mt-[38svh] lg:mt-0 lg:-ml-20">
                                 <div className="glass-premium rounded-[32px] sm:rounded-[40px] p-8 sm:p-14 shadow-glass border-white/60 relative overflow-hidden group hover:shadow-glass-hover transition-all duration-700">
-                                    
                                     <span className="relative inline-block py-1.5 px-4 rounded-full bg-navy/5 text-navy font-bold text-xs tracking-widest mb-8 border border-navy/10">
                                         EST. 2024 TOKYO
                                     </span>
-
-                                    {/* フォントをゴシック体に戻しました */}
                                     <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight mb-8 text-text-dark tracking-tight">
                                         総合型選抜の、<br />
                                         最強のパートナー、<br />
                                         <span className="text-navy decoration-cta/20 decoration-2 underline-offset-8">Ark College</span>
                                     </h1>
-                                    
                                     <div className="relative space-y-4 mb-12">
                                         {["第一志望合格率 86.7%", "添削回数 完全無制限", "48時間以内 返信確約"].map((text, i) => (
                                             <div key={i} className="flex items-center space-x-4 group/item">
@@ -240,7 +221,6 @@
                                             </div>
                                         ))}
                                     </div>
-
                                     <div className="relative space-y-5">
                                         <button onClick={scrollToDiagnosis} className="btn-elegant w-full relative overflow-hidden text-white text-xl font-bold py-5 rounded-xl tracking-wide">
                                             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shine"></div>
@@ -276,7 +256,6 @@
                                 ].map((card, idx) => (
                                     <FadeIn key={idx} delay={card.delay} className="h-full">
                                         <div className="group h-full bg-white rounded-[24px] p-2 shadow-card hover:shadow-glass-hover transition-all duration-500 hover:-translate-y-1 flex flex-col border border-slate-100/50">
-                                            {/* Image */}
                                             <div className="h-60 overflow-hidden rounded-[20px] relative flex-shrink-0">
                                                 <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-500 z-10"></div>
                                                 <img src={card.img} alt={card.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out" />
@@ -284,7 +263,6 @@
                                                     {card.title}
                                                 </div>
                                             </div>
-
                                             <div className="p-8 flex flex-col flex-grow">
                                                 <div className="flex items-center gap-4 mb-6">
                                                     <div className="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center text-navy group-hover:bg-navy group-hover:text-white transition-all duration-500">
@@ -305,7 +283,6 @@
                     {/* COMMITMENT */}
                     <section className="py-24 sm:py-40 relative overflow-hidden bg-white">
                          <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAFA] to-white -z-10"></div>
-                         
                          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                             <FadeIn>
                                 <div className="glass-premium rounded-[40px] p-8 sm:p-20 relative overflow-hidden border border-slate-100">
@@ -316,7 +293,6 @@
                                                 <span className="text-navy">「1学年6名」</span>しか<br/>
                                                 引き受けないのか。
                                             </h2>
-                                            
                                             <div className="space-y-10">
                                                 {[
                                                     { title: "品質の物理的限界", text: "「私は指導を学生バイトに外注しません。一人ひとりの人生と向き合い、細部まで責任を持つには、私が直接見る以外にないからです。その品質を維持できる物理的な限界が『6名』でした。」" },
@@ -353,17 +329,14 @@
                                 <div className="absolute inset-0 bg-gradient-to-tr from-cta to-navy rounded-[40px] transform rotate-3 opacity-5 blur-xl"></div>
                                 <img src="president.png" alt="Noah M." className="relative z-10 rounded-[30px] shadow-2xl mx-auto w-full object-cover" />
                             </FadeIn>
-                            
                             <FadeIn delay={200} className="w-full md:w-1/2">
                                 <span className="text-cta font-bold tracking-widest uppercase text-xs mb-6 block border-b border-cta/20 w-fit pb-1">Representative</span>
                                 <h2 className="text-4xl sm:text-6xl font-black mb-8 text-text-dark tracking-tight">Noah M.</h2>
-                                
                                 <p className="text-slate-600 text-base leading-loose mb-10 font-medium">
                                     慶應義塾大学法学部法律学科卒。欧州大学院留学。<br/>
                                     大手総合型選抜塾での4年間の指導、新規事業責任者としての組織統括を経て、外資系企業マーケターとして活躍。
                                     「受験指導」と「ビジネス戦略」を融合させた独自の指導論を持つ。
                                 </p>
-
                                 <div className="space-y-4 mb-12">
                                     <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
                                         <h4 className="font-bold text-base text-navy mb-1">慶應義塾大学法学部 FIT入試</h4>
@@ -374,7 +347,6 @@
                                         <p className="text-slate-500 font-medium text-sm">指導人数50名以上 / 合格大学31校</p>
                                     </div>
                                 </div>
-                                
                                 <div className="p-8 rounded-2xl italic text-text-dark leading-relaxed relative text-lg font-bold bg-navy/5 border border-navy/5">
                                     <span className="absolute -top-3 -left-1 text-5xl text-cta/20 font-serif">“</span>
                                     「1学年6名限定。私が全責任を持って担当します。小手先ではない、社会で通用する『本物の思考力』を養いましょう。」
@@ -392,6 +364,7 @@
                             </FadeIn>
                             
                             <FadeIn delay={200}>
+                                {/* Desktop Table */}
                                 <div className="hidden lg:block bg-white rounded-[32px] overflow-hidden shadow-card border border-slate-100">
                                     <table className="w-full border-collapse">
                                         <thead>
@@ -423,24 +396,58 @@
                                     </table>
                                 </div>
 
-                                {/* Mobile Pricing */}
-                                <div className="lg:hidden bg-white rounded-[24px] p-8 shadow-card border-t-4 border-cta">
-                                    <div className="text-center mb-8">
-                                        <span className="bg-cta text-white px-3 py-1 rounded text-xs font-bold uppercase tracking-wider">Premium</span>
-                                        <h3 className="text-2xl font-black text-text-dark mt-4">Ark College</h3>
+                                {/* Mobile Pricing Comparison (New Layout) */}
+                                <div className="lg:hidden bg-white rounded-[24px] p-6 shadow-card border border-slate-100">
+                                    {/* Header Comparison */}
+                                    <div className="grid grid-cols-2 gap-4 mb-6 border-b border-slate-100 pb-4">
+                                        <div className="text-center">
+                                            <span className="bg-cta text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider block w-fit mx-auto mb-2">Premium</span>
+                                            <h3 className="text-lg font-black text-navy">Ark College</h3>
+                                        </div>
+                                        <div className="text-center flex items-end justify-center pb-1">
+                                            <h3 className="text-sm font-bold text-slate-400">大手他社</h3>
+                                        </div>
                                     </div>
+
+                                    {/* Rows */}
                                     <div className="space-y-6">
-                                        <div className="flex justify-between items-baseline border-b border-slate-100 pb-4">
-                                            <span className="text-slate-500 font-bold text-sm">総額目安</span>
-                                            <span className="text-cta text-2xl font-bold">約80万円</span>
+                                        {/* Row 1: Total Cost */}
+                                        <div>
+                                            <p className="text-xs font-bold text-slate-400 text-center mb-2">総額目安 (合格まで)</p>
+                                            <div className="grid grid-cols-2 gap-4 items-center">
+                                                <div className="text-center bg-cta/5 py-3 rounded-lg border border-cta/10">
+                                                    <span className="text-cta text-xl font-black block">約80万円</span>
+                                                </div>
+                                                <div className="text-center">
+                                                    <span className="text-slate-400 line-through text-sm font-medium">約120万円</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="flex justify-between items-center border-b border-slate-100 pb-4">
-                                            <span className="text-slate-500 font-bold text-sm">月額</span>
-                                            <span className="text-text-dark text-xl font-bold">8.5万円〜</span>
+
+                                        {/* Row 2: Monthly */}
+                                        <div>
+                                            <p className="text-xs font-bold text-slate-400 text-center mb-2">月額費用</p>
+                                            <div className="grid grid-cols-2 gap-4 items-center">
+                                                <div className="text-center">
+                                                    <span className="text-text-dark text-lg font-bold block">8.5万円〜</span>
+                                                </div>
+                                                <div className="text-center">
+                                                    <span className="text-slate-400 text-sm font-medium">約7万円〜</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="flex justify-between items-center">
-                                            <span className="text-slate-500 font-bold text-sm">添削</span>
-                                            <span className="text-navy text-xl font-bold">完全無制限</span>
+
+                                        {/* Row 3: Corrections */}
+                                        <div>
+                                            <p className="text-xs font-bold text-slate-400 text-center mb-2">添削回数</p>
+                                            <div className="grid grid-cols-2 gap-4 items-center">
+                                                <div className="text-center">
+                                                    <span className="text-navy text-lg font-bold block">完全無制限</span>
+                                                </div>
+                                                <div className="text-center">
+                                                    <span className="text-slate-400 text-sm font-medium">回数制限あり</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
