@@ -207,8 +207,8 @@
                                         EST. 2024 TOKYO
                                     </span>
                                     <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight mb-8 text-text-dark tracking-tight">
-                                        総合型選抜の、<br />
-                                        最強のパートナー、<br />
+                                        総合型選抜、<br />
+                                        最強のパートナー。<br />
                                         <span className="text-navy decoration-cta/20 decoration-2 underline-offset-8">Ark College</span>
                                     </h1>
                                     <div className="relative space-y-4 mb-12">
@@ -224,11 +224,8 @@
                                     <div className="relative space-y-5">
                                         <button onClick={scrollToDiagnosis} className="btn-elegant w-full relative overflow-hidden text-white text-xl font-bold py-5 rounded-xl tracking-wide">
                                             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shine"></div>
-                                            <span className="relative z-10">無料合格可能性診断を受ける</span>
+                                            <span className="relative z-10">まずは無料相談を受ける</span>
                                         </button>
-                                        <p className="text-xs text-slate-400 text-center tracking-widest uppercase font-medium">
-                                            Online Diagnosis / No Solicitation
-                                        </p>
                                     </div>
                                 </div>
                             </FadeIn>
@@ -250,9 +247,9 @@
                             
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
                                 {[
-                                    { title: "Speed", jp: "圧倒的な速度", sub: "48時間以内返信、\n添削無制限", desc: "「書けない時間」をゼロに。思考を止めない圧倒的なレスポンス速度で、あなたの執筆リズムを最優先します。", icon: <ZapIcon className="w-8 h-8" />, img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600", delay: 0 },
-                                    { title: "Quality", jp: "妥協なき品質", sub: "完全マンツーマン、\nプロ講師のみ", desc: "学生バイトは一切不在。外資系マーケター出身のプロが、あなたの「担当」として責任を持って向き合います。", icon: <ShieldIcon className="w-8 h-8" />, img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600", delay: 150 },
-                                    { title: "Result", jp: "確かな実績", sub: "第一志望合格率 86.7%", desc: "慶應・早稲田など難関大への圧倒的な実績が、私たちの「戦略の正しさ」を何よりも証明しています。", icon: <TargetIcon className="w-8 h-8" />, img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600", delay: 300 }
+                                    { title: "Speed", jp: "圧倒的な速度", sub: "48時間以内返信、\n添削無制限", desc: "「書けない時間」をゼロに。圧倒的なレスポンス速度で、PDCAサイクルを最速にします。", icon: <ZapIcon className="w-8 h-8" />, img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600", delay: 0 },
+                                    { title: "Quality", jp: "妥協なき品質", sub: "完全マンツーマン、\nプロ講師のみ", desc: "学生バイトは一切不在。プロ講師が「担任」として責任を持って向き合います。", icon: <ShieldIcon className="w-8 h-8" />, img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600", delay: 150 },
+                                    { title: "Result", jp: "確かな実績", sub: "第一志望合格率 86.7%", desc: "慶應・早稲田など難関大への圧倒的な実績。安心してお任せください。", icon: <TargetIcon className="w-8 h-8" />, img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600", delay: 300 }
                                 ].map((card, idx) => (
                                     <FadeIn key={idx} delay={card.delay} className="h-full">
                                         <div className="group h-full bg-white rounded-[24px] p-2 shadow-card hover:shadow-glass-hover transition-all duration-500 hover:-translate-y-1 flex flex-col border border-slate-100/50">
@@ -289,14 +286,14 @@
                                     <div className="flex flex-col lg:flex-row gap-20 items-center">
                                         <div className="w-full lg:w-3/5 text-text-dark">
                                             <h2 className="text-3xl sm:text-5xl font-black mb-10 leading-tight tracking-tight">
-                                                なぜ、私たちは<br/>
+                                                なぜ、
                                                 <span className="text-navy">「1学年6名」</span>しか<br/>
                                                 引き受けないのか。
                                             </h2>
                                             <div className="space-y-10">
                                                 {[
-                                                    { title: "品質の物理的限界", text: "「私は指導を学生バイトに外注しません。一人ひとりの人生と向き合い、細部まで責任を持つには、私が直接見る以外にないからです。その品質を維持できる物理的な限界が『6名』でした。」" },
-                                                    { title: "本物の思考力を養う", text: "「小手先のテクニックではなく、社会で通用する『本物の思考力』を養うには、徹底的な対話が必要です。これはマス向けの大量指導では不可能です。」" }
+                                                    { title: "品質の物理的限界", text: "「学生バイトはいません。細部まで責任を持つには、私が直接見るほかないからです。品質を維持できる物理的な限界が6名でした。」" },
+                                                    { title: "本物の思考力を養う", text: "「社会で通用する思考力を養うには、徹底的な対話が必要です。これはマス向けの大量指導では不可能です。」" }
                                                 ].map((item, i) => (
                                                     <div key={i} className="pl-8 border-l-2 border-slate-200">
                                                         <h3 className="text-xl sm:text-2xl font-bold mb-4 flex items-center text-text-dark">
@@ -333,9 +330,9 @@
                                 <span className="text-cta font-bold tracking-widest uppercase text-xs mb-6 block border-b border-cta/20 w-fit pb-1">Representative</span>
                                 <h2 className="text-4xl sm:text-6xl font-black mb-8 text-text-dark tracking-tight">Noah M.</h2>
                                 <p className="text-slate-600 text-base leading-loose mb-10 font-medium">
-                                    慶應義塾大学法学部法律学科卒。欧州大学院留学。<br/>
-                                    大手総合型選抜塾での4年間の指導、新規事業責任者としての組織統括を経て、外資系企業マーケターとして活躍。
-                                    「受験指導」と「ビジネス戦略」を融合させた独自の指導論を持つ。
+                                    慶應義塾大学法学部法律学科卒後、欧州大学院へ留学。<br/>
+                                    大手総合型選抜塾での4年間の指導経験を積んだのち、外資系企業にてマーケターとして活躍。その後総合型選抜塾の新規事業責任者としての組織統括を経て、アークカレッジを設立。
+                                    受験指導とビジネス戦略を融合させた独自の指導論をもとに多くの実績を持つ。
                                 </p>
                                 <div className="space-y-4 mb-12">
                                     <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
@@ -349,7 +346,7 @@
                                 </div>
                                 <div className="p-8 rounded-2xl italic text-text-dark leading-relaxed relative text-lg font-bold bg-navy/5 border border-navy/5">
                                     <span className="absolute -top-3 -left-1 text-5xl text-cta/20 font-serif">“</span>
-                                    「1学年6名限定。私が全責任を持って担当します。小手先ではない、社会で通用する『本物の思考力』を養いましょう。」
+                                    「1学年6名限定。私が全責任を持って担当します。小手先ではない、社会で通用する本物の思考力を養いましょう。」
                                 </div>
                             </FadeIn>
                         </div>
@@ -456,7 +453,7 @@
                             <FadeIn delay={300} className="mt-16 bg-white border border-dashed border-cta/30 p-8 sm:p-12 rounded-[30px] text-center relative overflow-hidden group">
                                 <p className="text-cta font-bold text-sm sm:text-base mb-4 tracking-widest uppercase">Special Offer</p>
                                 <p className="text-text-dark font-black text-xl sm:text-2xl leading-relaxed">
-                                    診断当日・翌日の入会決定で、<br />
+                                    無料診断当日の入会決定で、<br />
                                     入会金 55,000円 → <span className="text-cta text-4xl sm:text-5xl font-black ml-2 inline-block">0円</span>
                                 </p>
                             </FadeIn>
