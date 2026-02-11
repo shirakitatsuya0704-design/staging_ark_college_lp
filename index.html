@@ -404,9 +404,9 @@
                                         </div>
                                     </div>
                                     <div className="w-full lg:w-2/5 relative">
-                                        <div className="relative z-10 rounded-[20px] overflow-hidden shadow-2xl border border-white/10 rotate-2 transition-transform hover:rotate-0 duration-500">
-                                            {/* 修正1: 画像を日本人モデルに差し替え (Unsplash) */}
-                                            <img src="student_1.png" alt="Student studying" className="grayscale hover:grayscale-0 transition-all duration-700" />
+                                        {/* 画像をヨリにする修正: コンテナに高さを指定し、画像を拡大してトリミング */}
+                                        <div className="relative z-10 rounded-[20px] overflow-hidden shadow-2xl border border-white/10 rotate-2 transition-transform hover:rotate-0 duration-500 h-[300px] sm:h-[400px] lg:h-[500px]">
+                                            <img src="student_1.png" alt="Student studying" className="w-full h-full object-cover object-center scale-125 grayscale hover:grayscale-0 transition-all duration-700" />
                                         </div>
                                         <div className="absolute -bottom-5 -left-5 bg-cta text-white p-5 rounded-[16px] shadow-glow-cta z-20 hidden sm:block border border-white/20">
                                             <p className="font-bold text-sm leading-tight">代表による、<br />完全直接指導</p>
@@ -422,7 +422,10 @@
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
                             <div className="w-full md:w-1/2 relative">
                                 <div className="absolute inset-0 bg-gradient-to-tr from-cta to-navy rounded-[24px] transform rotate-3 opacity-10"></div>
-                                <img src="president.png" alt="Noah M." className="relative z-10 rounded-[20px] shadow-xl mx-auto w-full object-cover grayscale hover:grayscale-0 transition-all duration-700 border border-slate-100" />
+                                {/* 画像をヨリにする修正: 画像を囲むコンテナでトリミングと拡大を行う */}
+                                <div className="relative z-10 rounded-[20px] shadow-xl mx-auto w-full overflow-hidden border border-slate-100 h-[400px] sm:h-[500px]">
+                                    <img src="president.png" alt="Noah M." className="w-full h-full object-cover object-top scale-125 grayscale hover:grayscale-0 transition-all duration-700" />
+                                </div>
                             </div>
                             <div className="w-full md:w-1/2">
                                 <span className="text-cta font-bold tracking-widest uppercase text-[10px] mb-2 block">Representative</span>
