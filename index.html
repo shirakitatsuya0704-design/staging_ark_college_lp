@@ -166,13 +166,18 @@
                             <div className="flex items-center">
                                 <img src="logo.webp" alt="Ark College" className="h-7 w-auto drop-shadow-sm" />
                             </div>
+                            {/* CTA追加: デスクトップ用ヘッダーボタン */}
+                            <div className="hidden sm:block">
+                                <button onClick={scrollToDiagnosis} className={`btn-shine text-xs font-bold px-6 py-2.5 rounded-full shadow-lg transition-all hover:-translate-y-0.5 ${isScrolled ? 'bg-cta text-white' : 'bg-white text-cta shadow-xl'}`}>
+                                    無料相談を予約する
+                                </button>
+                            </div>
                         </div>
                     </header>
 
                     {/* FV */}
                     <section className="relative w-full min-h-[100svh] flex flex-col lg:flex-row items-center justify-center pt-20 lg:pt-0">
                         <div className="absolute top-0 left-0 w-full h-[45svh] lg:h-full lg:w-[60%] lg:left-0 overflow-hidden z-0">
-                             {/* 画像変更: 日本人の学生が勉強している真面目な雰囲気 */}
                              <img src="president.png" alt="Student Studying" className="w-full h-full object-cover object-center shadow-2xl" />
                              <div className="lg:hidden absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8FAFC] to-transparent"></div>
                         </div>
@@ -196,7 +201,6 @@
                                     ))}
                                 </div>
                                 <div className="space-y-2">
-                                    {/* 修正2: 希少性訴求バッジ */}
                                     <div className="flex justify-center mb-1">
                                         <span className="bg-red-600 text-white px-3 py-1 text-[10px] font-bold rounded-full shadow-md animate-pulse">
                                             2026年度 新規受入 残りわずか / 1学年6名限定
@@ -205,7 +209,6 @@
                                     <button onClick={scrollToDiagnosis} className="btn-shine w-full bg-gradient-to-r from-cta to-cta-light text-white text-sm sm:text-base font-bold py-3.5 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 tracking-wide">
                                         とりあえず無料相談に申し込む
                                     </button>
-                                    {/* 修正4: CTAハードル下げ */}
                                     <div className="text-center space-y-0.5">
                                         <p className="text-[9px] sm:text-[10px] font-bold text-cta tracking-wide">
                                             今の実力がわかるフィードバックシートをプレゼント
@@ -230,7 +233,6 @@
                             
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 mb-12">
                                 {[
-                                    // 修正1: 画像を日本人モデルに差し替え (Unsplash)
                                     { sub: "48時間以内返信、\n添削無制限", desc: "「書けない時間」をゼロに。圧倒的なレスポンス速度で、PDCAを最速で回します。", icon: <ZapIcon className="w-5 h-5" />, img: "student_2.png" },
                                     { sub: "完全マンツーマン、\nプロ講師のみ", desc: "学生バイトは不在。プロ講師のみが担任として責任を持って向き合います。", icon: <ShieldIcon className="w-5 h-5" />, img: "Class_2.png" },
                                     { sub: "第一志望\n合格率 86.7%", desc: "難関大への圧倒的な実績。安心してお任せください。", icon: <TargetIcon className="w-5 h-5" />, img: "College.png" }
@@ -272,7 +274,6 @@
                                 <div className="glass-panel p-6 sm:p-8 rounded-[24px] shadow-lg border-l-4 border-cta relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
                                     <div className="flex items-center justify-between mb-6">
                                         <div className="flex items-center gap-3">
-                                            {/* 修正1: 日本人学生アイコン */}
                                             <img src="boy.png" alt="K.S.さん" className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" />
                                             <div>
                                                 <p className="text-sm font-bold text-navy">K.S.さん</p>
@@ -304,7 +305,6 @@
                                 <div className="glass-panel p-6 sm:p-8 rounded-[24px] shadow-lg border-l-4 border-navy relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
                                     <div className="flex items-center justify-between mb-6">
                                         <div className="flex items-center gap-3">
-                                            {/* 修正1: 日本人学生アイコン */}
                                             <img src="girl.png" alt="M.T.さん" className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" />
                                             <div>
                                                 <p className="text-sm font-bold text-navy">M.T.さん</p>
@@ -331,6 +331,14 @@
                                         </p>
                                     </div>
                                 </div>
+                            </div>
+
+                            {/* CTA追加: ケーススタディを見て意欲が高まったユーザー向け */}
+                            <div className="mt-10 text-center">
+                                <button onClick={scrollToDiagnosis} className="inline-flex items-center gap-2 text-navy font-bold text-sm border-b-2 border-cta pb-0.5 hover:text-cta transition-colors">
+                                    <span>あなただけの合格戦略を作成する</span>
+                                    <ArrowRightIcon className="w-4 h-4" />
+                                </button>
                             </div>
                         </div>
                     </section>
@@ -397,7 +405,6 @@
                                         </div>
                                     </div>
                                     <div className="w-full lg:w-2/5 relative">
-                                        {/* 画像をヨリにする修正: コンテナに高さを指定し、画像を拡大してトリミング */}
                                         <div className="relative z-10 rounded-[20px] overflow-hidden shadow-2xl border border-white/10 rotate-2 transition-transform hover:rotate-0 duration-500 h-[300px] sm:h-[400px] lg:h-[500px]">
                                             <img src="student_1.png" alt="Student studying" className="w-full h-full object-cover object-center scale-125 grayscale hover:grayscale-0 transition-all duration-700" />
                                         </div>
@@ -415,7 +422,6 @@
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
                             <div className="w-full md:w-1/2 relative">
                                 <div className="absolute inset-0 bg-gradient-to-tr from-cta to-navy rounded-[24px] transform rotate-3 opacity-10"></div>
-                                {/* 画像をヨリにする修正: 画像を囲むコンテナでトリミングと拡大を行う */}
                                 <div className="relative z-10 rounded-[20px] shadow-xl mx-auto w-full overflow-hidden border border-slate-100 h-[400px] sm:h-[500px]">
                                     <img src="president.png" alt="Noah M." className="w-full h-full object-cover object-top scale-125 grayscale hover:grayscale-0 transition-all duration-700" />
                                 </div>
@@ -445,6 +451,12 @@
                                 <div className="glass-panel p-5 rounded-xl italic text-navy leading-relaxed relative text-sm sm:text-base font-bold shadow-md border-l-0 border-r-0 border-t-0 border-b-4 border-cta/20">
                                     <span className="absolute -top-3 -left-1 text-5xl text-cta font-serif opacity-20">“</span>
                                     「大学合格はゴールではなく通過点。アークカレッジでの日々が、社会に出た時の『自分の基準』になるような、一生モノの思考力をここで作り上げましょう。」
+                                </div>
+                                {/* CTA追加: 代表メッセージ下 */}
+                                <div className="mt-6 text-center md:text-left">
+                                     <button onClick={scrollToDiagnosis} className="inline-flex items-center justify-center px-6 py-3 border border-navy text-navy rounded-full font-bold text-sm hover:bg-navy hover:text-white transition-all duration-300">
+                                        代表の直接指導に申し込む
+                                     </button>
                                 </div>
                             </div>
                         </div>
@@ -496,15 +508,14 @@
                                             <td className="p-2 sm:p-6 text-center text-cta text-sm sm:text-xl font-black whitespace-nowrap">約80万円</td>
                                             <td className="p-2 sm:p-6 text-center text-slate-400 line-through text-[10px] sm:text-sm whitespace-nowrap">約120万円</td>
                                         </tr>
-                                        {/* 修正3: 比較表に項目追加 */}
                                         <tr className="border-b border-slate-200">
                                             <td className="p-2 sm:p-6 text-navy text-[10px] sm:text-base whitespace-nowrap">講師の質</td>
-                                            <td className="p-2 sm:p-6 text-center text-navy text-[10px] sm:text-base whitespace-nowrap">全員がプロ<br class="sm:hidden"/><span className="text-[9px] sm:text-xs font-normal">(外資系出身)</span></td>
+                                            <td className="p-2 sm:p-6 text-center text-navy text-[10px] sm:text-base whitespace-nowrap">全員がプロ<br className="sm:hidden"/><span className="text-[9px] sm:text-xs font-normal">(外資系出身)</span></td>
                                             <td className="p-2 sm:p-6 text-center text-slate-400 text-[10px] sm:text-sm whitespace-nowrap">学生バイト含む</td>
                                         </tr>
                                         <tr className="border-b border-slate-200">
                                             <td className="p-2 sm:p-6 text-navy text-[10px] sm:text-base whitespace-nowrap">指導の深さ</td>
-                                            <td className="p-2 sm:p-6 text-center text-navy text-[10px] sm:text-base whitespace-nowrap">戦略・ロジック<br class="sm:hidden"/>構築から</td>
+                                            <td className="p-2 sm:p-6 text-center text-navy text-[10px] sm:text-base whitespace-nowrap">戦略・ロジック<br className="sm:hidden"/>構築から</td>
                                             <td className="p-2 sm:p-6 text-center text-slate-400 text-[10px] sm:text-sm whitespace-nowrap">表面的な文章添削のみ</td>
                                         </tr>
                                         <tr className="border-b border-slate-200">
@@ -525,6 +536,10 @@
                                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cta to-cta-light"></div>
                                 <p className="text-cta font-bold text-xs sm:text-sm mb-1.5 tracking-widest uppercase">Special Offer</p>
                                 <p className="text-navy font-bold text-base sm:text-xl leading-tight">診断当日・翌日の入会決定で、<br />入会金 55,000円 → <span className="text-cta text-2xl sm:text-3xl font-black ml-2 inline-block">0円</span></p>
+                                {/* CTA追加: 特典ボックス内 */}
+                                <button onClick={scrollToDiagnosis} className="mt-4 bg-cta/10 text-cta border border-cta/30 font-bold py-2 px-8 rounded-full text-sm hover:bg-cta hover:text-white transition-all duration-300">
+                                    今すぐ申し込む
+                                </button>
                             </div>
                         </div>
                     </section>
@@ -621,7 +636,6 @@
                                     <button type="submit" className="btn-shine w-full bg-gradient-to-r from-cta to-cta-light text-white text-base sm:text-lg font-bold py-4 rounded-xl shadow-glow-cta hover:shadow-2xl hover:-translate-y-0.5 transition-all mt-4 tracking-wide">
                                         この内容で送信する
                                     </button>
-                                    {/* 修正4: CTAハードル下げ */}
                                     <div className="text-center">
                                         <p className="text-[10px] font-bold text-slate-500 tracking-wide mt-2">
                                             ※スマホで3分で入力完了
