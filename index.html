@@ -173,7 +173,7 @@
                     <section className="relative w-full min-h-[100svh] flex flex-col lg:flex-row items-center justify-center pt-20 lg:pt-0">
                         <div className="absolute top-0 left-0 w-full h-[45svh] lg:h-full lg:w-[60%] lg:left-0 overflow-hidden z-0">
                              {/* 画像変更: 日本人の学生が勉強している真面目な雰囲気 */}
-                             <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1600" alt="Student Studying" className="w-full h-full object-cover object-center shadow-2xl" />
+                             <img src="president.png" alt="Student Studying" className="w-full h-full object-cover object-center shadow-2xl" />
                              <div className="lg:hidden absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8FAFC] to-transparent"></div>
                         </div>
 
@@ -238,9 +238,9 @@
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 mb-12">
                                 {[
                                     // 修正1: 画像を日本人モデルに差し替え (Unsplash)
-                                    { sub: "48時間以内返信、\n添削無制限", desc: "「書けない時間」をゼロに。思考を止めない圧倒的なレスポンス速度で、あなたの執筆リズムを最優先します。", icon: <ZapIcon className="w-5 h-5" />, img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=600" },
-                                    { sub: "完全マンツーマン、\nプロ講師のみ", desc: "学生バイトは一切不在。外資系マーケター出身のプロが、あなたの「担当」として責任を持って向き合います。", icon: <ShieldIcon className="w-5 h-5" />, img: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&q=80&w=600" },
-                                    { sub: "第一志望\n合格率 86.7%", desc: "慶應・早稲田など難関大への圧倒的な実績が、私たちの「戦略の正しさ」を何よりも証明しています。", icon: <TargetIcon className="w-5 h-5" />, img: "https://images.unsplash.com/photo-1623479322729-28b25c16b011?auto=format&fit=crop&q=80&w=600" }
+                                    { sub: "48時間以内返信、\n添削無制限", desc: "「書けない時間」をゼロに。思考を止めない圧倒的なレスポンス速度で、あなたの執筆リズムを最優先します。", icon: <ZapIcon className="w-5 h-5" />, img: "student_2.png" },
+                                    { sub: "完全マンツーマン、\nプロ講師のみ", desc: "学生バイトは一切不在。外資系マーケター出身のプロが、あなたの「担当」として責任を持って向き合います。", icon: <ShieldIcon className="w-5 h-5" />, img: "Class_2.png" },
+                                    { sub: "第一志望\n合格率 86.7%", desc: "慶應・早稲田など難関大への圧倒的な実績が、私たちの「戦略の正しさ」を何よりも証明しています。", icon: <TargetIcon className="w-5 h-5" />, img: "College.png" }
                                 ].map((card, idx) => (
                                     <div key={idx} className="group relative bg-white rounded-[20px] p-2 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 border border-slate-100">
                                         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white rounded-[20px] -z-10"></div>
@@ -409,7 +409,7 @@
                                     <div className="w-full lg:w-2/5 relative">
                                         <div className="relative z-10 rounded-[20px] overflow-hidden shadow-2xl border border-white/10 rotate-2 transition-transform hover:rotate-0 duration-500">
                                             {/* 修正1: 画像を日本人モデルに差し替え (Unsplash) */}
-                                            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=800" alt="Student studying" className="grayscale hover:grayscale-0 transition-all duration-700" />
+                                            <img src="student_1.png" alt="Student studying" className="grayscale hover:grayscale-0 transition-all duration-700" />
                                         </div>
                                         <div className="absolute -bottom-5 -left-5 bg-cta text-white p-5 rounded-[16px] shadow-glow-cta z-20 hidden sm:block border border-white/20">
                                             <p className="font-bold text-sm leading-tight">代表による、<br />完全直接指導</p>
