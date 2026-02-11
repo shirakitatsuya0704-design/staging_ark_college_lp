@@ -95,6 +95,21 @@
             transform: skewX(-15deg);
             animation: shine 4s infinite;
         }
+        
+        /* テーブルの横スクロール用（PCでは有効、モバイルでは無効化してフィットさせる） */
+        .table-container {
+            /* モバイルではスクロールさせず、中身を小さくして収める方針 */
+            width: 100%;
+        }
+        @media (min-width: 640px) {
+            .table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .table-container table {
+                min-width: 600px;
+            }
+        }
     </style>
 </head>
 <body class="bg-gradient-mesh">
@@ -311,37 +326,37 @@
                                 <p className="text-slate-500 text-sm sm:text-lg font-bold">透明性の高い、シンプルな料金体系。</p>
                             </div>
                             
-                            {/* 修正: padding調整とスクロール構造の改善 */}
-                            <div className="glass-panel rounded-[24px] overflow-hidden shadow-xl border border-white">
-                                <div className="overflow-x-auto">
-                                    <table className="w-full border-collapse min-w-[500px]">
-                                        <thead>
-                                            <tr className="border-b border-slate-200 text-sm bg-white/50">
-                                                {/* スマホ: p-3, PC: p-6 */}
-                                                <th className="p-3 sm:p-6 text-left font-bold text-slate-500 uppercase tracking-widest w-1/3 text-xs whitespace-nowrap">Service</th>
-                                                <th className="p-3 sm:p-6 bg-navy text-white text-center font-bold w-1/3 text-base whitespace-nowrap">Ark College</th>
-                                                <th className="p-3 sm:p-6 text-center font-bold text-slate-400 w-1/3 text-xs whitespace-nowrap">大手他社</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody className="text-base font-bold">
-                                            <tr className="bg-cta/5 border-b border-slate-200">
-                                                <td className="p-3 sm:p-6 border-l-[4px] border-cta text-navy whitespace-nowrap">総額目安 <span className="text-[10px] font-normal text-slate-500 block mt-0.5">(合格まで)</span></td>
-                                                <td className="p-3 sm:p-6 text-center text-cta text-xl font-black whitespace-nowrap">約80万円</td>
-                                                <td className="p-3 sm:p-6 text-center text-slate-400 line-through text-sm whitespace-nowrap">約120万円</td>
-                                            </tr>
-                                            <tr className="border-b border-slate-200">
-                                                <td className="p-3 sm:p-6 text-navy whitespace-nowrap">月額費用</td>
-                                                <td className="p-3 sm:p-6 text-center text-navy text-lg whitespace-nowrap">約8.5万円〜</td>
-                                                <td className="p-3 sm:p-6 text-center text-slate-400 text-sm whitespace-nowrap">約7万円〜</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="p-3 sm:p-6 text-navy whitespace-nowrap">添削回数</td>
-                                                <td className="p-3 sm:p-6 text-center text-white bg-cta font-bold whitespace-nowrap">完全無制限</td>
-                                                <td className="p-3 sm:p-6 text-center text-slate-400 text-sm whitespace-nowrap">回数制限あり</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                            {/* 修正: スクロールなしで収まるように文字サイズと余白を極限まで縮小 */}
+                            <div className="glass-panel rounded-[24px] overflow-hidden shadow-xl border border-white table-container">
+                                <table className="w-full border-collapse">
+                                    <thead>
+                                        <tr className="border-b border-slate-200 bg-white/50">
+                                            {/* モバイル: p-2 text-[10px], PC: p-6 text-xs */}
+                                            <th className="p-2 sm:p-6 text-left font-bold text-slate-500 uppercase tracking-widest w-[30%] text-[10px] sm:text-xs whitespace-nowrap">Service</th>
+                                            <th className="p-2 sm:p-6 bg-navy text-white text-center font-bold w-[35%] text-xs sm:text-base whitespace-nowrap">Ark College</th>
+                                            <th className="p-2 sm:p-6 text-center font-bold text-slate-400 w-[35%] text-[10px] sm:text-xs whitespace-nowrap">大手他社</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="font-bold">
+                                        <tr className="bg-cta/5 border-b border-slate-200">
+                                            <td className="p-2 sm:p-6 border-l-[3px] sm:border-l-[4px] border-cta text-navy text-[10px] sm:text-base whitespace-nowrap">
+                                                総額目安<span className="font-normal text-slate-500 block mt-0.5 scale-90 origin-left">(合格まで)</span>
+                                            </td>
+                                            <td className="p-2 sm:p-6 text-center text-cta text-sm sm:text-xl font-black whitespace-nowrap">約80万円</td>
+                                            <td className="p-2 sm:p-6 text-center text-slate-400 line-through text-[10px] sm:text-sm whitespace-nowrap">約120万円</td>
+                                        </tr>
+                                        <tr className="border-b border-slate-200">
+                                            <td className="p-2 sm:p-6 text-navy text-[10px] sm:text-base whitespace-nowrap">月額費用</td>
+                                            <td className="p-2 sm:p-6 text-center text-navy text-xs sm:text-lg whitespace-nowrap">約8.5万円〜</td>
+                                            <td className="p-2 sm:p-6 text-center text-slate-400 text-[10px] sm:text-sm whitespace-nowrap">約7万円〜</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="p-2 sm:p-6 text-navy text-[10px] sm:text-base whitespace-nowrap">添削回数</td>
+                                            <td className="p-2 sm:p-6 text-center text-white bg-cta font-bold text-[10px] sm:text-base whitespace-nowrap">完全無制限</td>
+                                            <td className="p-2 sm:p-6 text-center text-slate-400 text-[10px] sm:text-sm whitespace-nowrap">回数制限あり</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
 
                             <div className="mt-10 bg-white border border-cta/20 p-6 rounded-[20px] text-center shadow-lg relative overflow-hidden group">
