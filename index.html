@@ -172,15 +172,13 @@
                     {/* FV */}
                     <section className="relative w-full min-h-[100svh] flex flex-col lg:flex-row items-center justify-center pt-20 lg:pt-0">
                         <div className="absolute top-0 left-0 w-full h-[45svh] lg:h-full lg:w-[60%] lg:left-0 overflow-hidden z-0">
-                             {/* 画像変更: 日本人の学生が勉強している真面目な雰囲気 */}
-                             <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1600" alt="Student Studying" className="w-full h-full object-cover object-center shadow-2xl" />
+                             <img src="president.png" alt="President" className="w-full h-full object-cover object-top lg:object-center shadow-2xl" />
                              <div className="lg:hidden absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8FAFC] to-transparent"></div>
                         </div>
 
                         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row lg:justify-end items-center lg:items-center h-full">
                             <div className="w-full lg:w-[500px] mt-[35svh] lg:mt-0 lg:-ml-20 glass-panel rounded-[32px] p-6 sm:p-10 shadow-2xl transform transition-all hover:scale-[1.01] duration-700 border-t border-white">
                                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-cta/10 rounded-full blur-3xl animate-pulse"></div>
-                                
                                 <span className="inline-block py-0.5 px-2.5 rounded-full bg-navy/5 text-navy text-[9px] sm:text-[10px] font-bold tracking-widest mb-3 border border-navy/10">
                                     EST. 2024 TOKYO
                                 </span>
@@ -200,30 +198,18 @@
                                     ))}
                                 </div>
                                 <div className="space-y-2">
-                                    {/* 修正2: 希少性訴求バッジ */}
-                                    <div className="flex justify-center mb-1">
-                                        <span className="bg-red-600 text-white px-3 py-1 text-[10px] font-bold rounded-full shadow-md animate-pulse">
-                                            2026年度 新規受入 残りわずか / 1学年6名限定
-                                        </span>
-                                    </div>
                                     <button onClick={scrollToDiagnosis} className="btn-shine w-full bg-gradient-to-r from-cta to-cta-light text-white text-sm sm:text-base font-bold py-3.5 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 tracking-wide">
                                         無料合格可能性診断を受ける
                                     </button>
-                                    {/* 修正4: CTAハードル下げ */}
-                                    <div className="text-center space-y-0.5">
-                                        <p className="text-[9px] sm:text-[10px] font-bold text-slate-500 tracking-wide">
-                                            ※無理な勧誘は一切いたしません
-                                        </p>
-                                        <p className="text-[9px] sm:text-[10px] font-bold text-cta tracking-wide">
-                                            今の実力がわかるフィードバックシートをプレゼント
-                                        </p>
-                                    </div>
+                                    <p className="text-[9px] sm:text-[10px] font-bold text-slate-400 text-center tracking-widest uppercase">
+                                        Online Diagnosis / No Solicitation
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Why Us */}
+                    {/* Why Us - 画像差し替え */}
                     <section className="pt-16 sm:pt-28 pb-10 relative overflow-hidden">
                         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-cta/5 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
@@ -237,10 +223,9 @@
                             
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 mb-12">
                                 {[
-                                    // 修正1: 画像を日本人モデルに差し替え (Unsplash)
-                                    { sub: "48時間以内返信、\n添削無制限", desc: "「書けない時間」をゼロに。思考を止めない圧倒的なレスポンス速度で、あなたの執筆リズムを最優先します。", icon: <ZapIcon className="w-5 h-5" />, img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=600" },
-                                    { sub: "完全マンツーマン、\nプロ講師のみ", desc: "学生バイトは一切不在。外資系マーケター出身のプロが、あなたの「担当」として責任を持って向き合います。", icon: <ShieldIcon className="w-5 h-5" />, img: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&q=80&w=600" },
-                                    { sub: "第一志望\n合格率 86.7%", desc: "慶應・早稲田など難関大への圧倒的な実績が、私たちの「戦略の正しさ」を何よりも証明しています。", icon: <TargetIcon className="w-5 h-5" />, img: "https://images.unsplash.com/photo-1623479322729-28b25c16b011?auto=format&fit=crop&q=80&w=600" }
+                                    { sub: "48時間以内返信、\n添削無制限", desc: "「書けない時間」をゼロに。思考を止めない圧倒的なレスポンス速度で、あなたの執筆リズムを最優先します。", icon: <ZapIcon className="w-5 h-5" />, img: "student_2.png" }, // 画像変更
+                                    { sub: "完全マンツーマン、\nプロ講師のみ", desc: "学生バイトは一切不在。外資系マーケター出身のプロが、あなたの「担当」として責任を持って向き合います。", icon: <ShieldIcon className="w-5 h-5" />, img: "Class_2.png" }, // 画像変更
+                                    { sub: "第一志望\n合格率 86.7%", desc: "慶應・早稲田など難関大への圧倒的な実績が、私たちの「戦略の正しさ」を何よりも証明しています。", icon: <TargetIcon className="w-5 h-5" />, img: "College.png" } // 画像変更
                                 ].map((card, idx) => (
                                     <div key={idx} className="group relative bg-white rounded-[20px] p-2 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 border border-slate-100">
                                         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white rounded-[20px] -z-10"></div>
@@ -265,7 +250,7 @@
                         </div>
                     </section>
 
-                    {/* Case Studies */}
+                    {/* Case Studies - 顔写真とイニシャル追加 */}
                     <section className="py-16 sm:py-24 bg-white relative border-t border-slate-100">
                         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                             <div className="text-center mb-10">
@@ -279,8 +264,7 @@
                                 <div className="glass-panel p-6 sm:p-8 rounded-[24px] shadow-lg border-l-4 border-cta relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
                                     <div className="flex items-center justify-between mb-6">
                                         <div className="flex items-center gap-3">
-                                            {/* 修正1: 日本人学生アイコン */}
-                                            <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&q=80&w=200" alt="K.S.さん" className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" />
+                                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=200" alt="K.S.さん" className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" />
                                             <div>
                                                 <p className="text-sm font-bold text-navy">K.S.さん</p>
                                                 <p className="text-[10px] text-slate-500">私立高校3年生</p>
@@ -311,8 +295,7 @@
                                 <div className="glass-panel p-6 sm:p-8 rounded-[24px] shadow-lg border-l-4 border-navy relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
                                     <div className="flex items-center justify-between mb-6">
                                         <div className="flex items-center gap-3">
-                                            {/* 修正1: 日本人学生アイコン */}
-                                            <img src="https://images.unsplash.com/photo-1595956553066-fe2428fad5c2?auto=format&fit=crop&q=80&w=200" alt="M.T.さん" className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" />
+                                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200" alt="M.T.さん" className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" />
                                             <div>
                                                 <p className="text-sm font-bold text-navy">M.T.さん</p>
                                                 <p className="text-[10px] text-slate-500">公立高校3年生</p>
@@ -385,7 +368,7 @@
                          </div>
                     </section>
 
-                    {/* Commitment */}
+                    {/* Commitment - 画像差し替え */}
                     <section className="py-16 sm:py-28 bg-navy relative overflow-hidden text-white">
                         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-cta/10 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2"></div>
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -408,8 +391,7 @@
                                     </div>
                                     <div className="w-full lg:w-2/5 relative">
                                         <div className="relative z-10 rounded-[20px] overflow-hidden shadow-2xl border border-white/10 rotate-2 transition-transform hover:rotate-0 duration-500">
-                                            {/* 修正1: 画像を日本人モデルに差し替え (Unsplash) */}
-                                            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=800" alt="Student studying" className="grayscale hover:grayscale-0 transition-all duration-700" />
+                                            <img src="student_1.png" className="grayscale hover:grayscale-0 transition-all duration-700" /> {/* 画像変更 */}
                                         </div>
                                         <div className="absolute -bottom-5 -left-5 bg-cta text-white p-5 rounded-[16px] shadow-glow-cta z-20 hidden sm:block border border-white/20">
                                             <p className="font-bold text-sm leading-tight">代表による、<br />完全直接指導</p>
@@ -502,17 +484,6 @@
                                             </td>
                                             <td className="p-2 sm:p-6 text-center text-cta text-sm sm:text-xl font-black whitespace-nowrap">約80万円</td>
                                             <td className="p-2 sm:p-6 text-center text-slate-400 line-through text-[10px] sm:text-sm whitespace-nowrap">約120万円</td>
-                                        </tr>
-                                        {/* 修正3: 比較表に項目追加 */}
-                                        <tr className="border-b border-slate-200">
-                                            <td className="p-2 sm:p-6 text-navy text-[10px] sm:text-base whitespace-nowrap">講師の質</td>
-                                            <td className="p-2 sm:p-6 text-center text-navy text-[10px] sm:text-base whitespace-nowrap">全員がプロ<br class="sm:hidden"/><span className="text-[9px] sm:text-xs font-normal">(外資系出身)</span></td>
-                                            <td className="p-2 sm:p-6 text-center text-slate-400 text-[10px] sm:text-sm whitespace-nowrap">学生バイト含む</td>
-                                        </tr>
-                                        <tr className="border-b border-slate-200">
-                                            <td className="p-2 sm:p-6 text-navy text-[10px] sm:text-base whitespace-nowrap">指導の深さ</td>
-                                            <td className="p-2 sm:p-6 text-center text-navy text-[10px] sm:text-base whitespace-nowrap">戦略・ロジック<br class="sm:hidden"/>構築から</td>
-                                            <td className="p-2 sm:p-6 text-center text-slate-400 text-[10px] sm:text-sm whitespace-nowrap">表面的な文章添削のみ</td>
                                         </tr>
                                         <tr className="border-b border-slate-200">
                                             <td className="p-2 sm:p-6 text-navy text-[10px] sm:text-base whitespace-nowrap">月額費用</td>
@@ -628,12 +599,6 @@
                                     <button type="submit" className="btn-shine w-full bg-gradient-to-r from-cta to-cta-light text-white text-base sm:text-lg font-bold py-4 rounded-xl shadow-glow-cta hover:shadow-2xl hover:-translate-y-0.5 transition-all mt-4 tracking-wide">
                                         この内容で送信する
                                     </button>
-                                    {/* 修正4: CTAハードル下げ */}
-                                    <div className="text-center">
-                                        <p className="text-[10px] font-bold text-slate-500 tracking-wide mt-2">
-                                            ※スマホで3分で入力完了
-                                        </p>
-                                    </div>
                                 </form>
 
                                 <div className="mt-10 text-center border-t border-slate-100 pt-8">
