@@ -354,32 +354,29 @@
                             <div className="grid md:grid-cols-2 gap-6 items-stretch">
                                 {/* Bad Example */}
                                 <div className="bg-white rounded-[24px] p-6 shadow-sm border border-slate-100 opacity-60 grayscale relative">
-                                    <div className="absolute top-4 left-4 bg-slate-200 text-slate-500 px-3 py-1 rounded-full text-[10px] font-bold">一般的</div>
+                                    <div className="absolute top-4 left-4 bg-slate-200 text-slate-500 px-3 py-1 rounded-full text-[10px] font-bold">Before：感想文</div>
                                     <div className="mt-8 space-y-4">
-                                        <div className="bg-slate-100 p-4 rounded-xl rounded-tl-none text-xs text-slate-600">
-                                            ここ、もう少し具体的に書いたほうがいいと思います。全体的にはいい感じです！
-                                        </div>
-                                        <div className="bg-slate-100 p-4 rounded-xl rounded-tl-none text-xs text-slate-600">
-                                            志望理由が弱い気がします。直しましょう。
+                                        <div className="bg-slate-100 p-4 rounded-xl rounded-tl-none text-xs text-slate-600 leading-relaxed">
+                                            <p className="font-bold mb-1 text-[10px] text-slate-400">志望理由：</p>
+                                            「私は海辺の街で育ちました。最近海が汚れているのを見て悲しくなりました。だから私は海をきれいにするために、この大学で環境学を学びたいです。」
                                         </div>
                                     </div>
-                                    <p className="text-center text-xs font-bold text-slate-400 mt-6">抽象的な「感想」のみ</p>
+                                    <p className="text-center text-xs font-bold text-slate-400 mt-6">感情論のみで「論理」がない</p>
                                 </div>
 
                                 {/* Ark College Example */}
                                 <div className="bg-white rounded-[24px] p-6 shadow-xl border-2 border-cta relative overflow-hidden">
-                                    <div className="absolute top-4 left-4 bg-cta text-white px-3 py-1 rounded-full text-[10px] font-bold">Ark College</div>
+                                    <div className="absolute top-4 left-4 bg-cta text-white px-3 py-1 rounded-full text-[10px] font-bold">After：論理的構成</div>
                                     <div className="mt-8 space-y-4">
-                                        <div className="bg-red-50 p-4 rounded-xl rounded-tl-none text-xs text-navy border border-red-100 relative">
-                                            <p className="font-bold text-red-600 mb-1 text-[10px]">Logical Flaw</p>
-                                            <p>「AだからB」という論理に飛躍があります。Aの要素の中にCという視点を入れることで、Bへの接続が大学の求める「〇〇力」へのアピールになります。</p>
+                                        <div className="bg-red-50 p-4 rounded-xl rounded-tl-none text-xs text-navy border border-red-100 relative leading-relaxed">
+                                            <p className="font-bold text-red-600 mb-1 text-[10px]">Structure & Logic</p>
+                                            <p>「産業構造の変化による排水問題が、深刻な漁業被害をもたらしています。この<span className="font-bold border-b border-red-300 bg-red-100/50">構造的な課題</span>に対し、貴学の△△教授のもと<span className="font-bold border-b border-red-300 bg-red-100/50">経済学の観点</span>から解決策を提示したい。」</p>
                                         </div>
-                                        <div className="bg-red-50 p-4 rounded-xl rounded-tl-none text-xs text-navy border border-red-100 relative">
-                                            <p className="font-bold text-red-600 mb-1 text-[10px]">Specifics</p>
-                                            <p>「グローバルな環境」という言葉は誰でも書けます。貴方の原体験である「XXでのエピソード」を具体例として引用し、独自性を出しましょう。</p>
+                                        <div className="bg-cta/5 p-2 rounded text-[10px] text-cta font-bold mt-2 text-center border border-cta/10">
+                                            point: 現状分析 → 課題特定 → 解決策 → 志望動機
                                         </div>
                                     </div>
-                                    <p className="text-center text-xs font-bold text-cta mt-6">「なぜダメで、どう直すべきか」を具体的・論理的に指摘</p>
+                                    <p className="text-center text-xs font-bold text-cta mt-6">「感想」を「論文」へ変える指導</p>
                                 </div>
                             </div>
                          </div>
@@ -397,7 +394,7 @@
                                         <div className="space-y-6">
                                             {[
                                                 { title: "品質の物理的限界", text: "「私は指導を学生バイトに外注しません。一人ひとりの人生と向き合い、細部まで責任を持つには、私が直接見る以外にないからです。その品質を維持できる物理的な限界が『6名』でした。」" },
-                                                { title: "本物の思考力を養う", text: "「小手先のテクニックではなく、社会で通用する『本物の思考力』を養うには、徹底的な対話が必要です。これはマス向けの大量指導では不可能です。」" }
+                                                { title: "本物の思考力を養う", text: "「小手先のテクニックではなく、『Why』を繰り返す対話（ソクラテスメソッド）を通じて、社会で通用する『本物の思考力』を養います。これはマス向けの大量指導では不可能です。」" }
                                             ].map((item, i) => (
                                                 <div key={i} className="pl-4 border-l border-white/10">
                                                     <h3 className="text-lg sm:text-xl font-bold mb-1.5 flex items-center text-white"><span className="text-cta mr-2 text-[10px] align-top font-mono">0{i+1}</span>{item.title}</h3>
@@ -432,8 +429,8 @@
                                 <h2 className="text-3xl sm:text-4xl font-black mb-5 tracking-tight text-navy">Noah M.</h2>
                                 <p className="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
                                     慶應義塾大学法学部法律学科卒。欧州大学院留学。<br/>
-                                    大手総合型選抜塾での4年間の指導、新規事業責任者としての組織統括を経て、外資系企業マーケターとして活躍。
-                                    「受験指導」と「ビジネス戦略」を融合させた独自の指導論を持つ。
+                                    フランス系トップメーカーでのマーケティング職を経て現職。<br/>
+                                    大学が求める人材像と生徒の強みを戦略的に結びつける「マッチング戦略」により、ビジネスと教育の視点を融合させた独自の指導を行う。
                                 </p>
                                 <div className="space-y-3 mb-8">
                                     <div className="border-l-[3px] border-cta pl-3 py-0.5">
@@ -451,7 +448,7 @@
                                 </div>
                                 <div className="glass-panel p-5 rounded-xl italic text-navy leading-relaxed relative text-sm sm:text-base font-bold shadow-md border-l-0 border-r-0 border-t-0 border-b-4 border-cta/20">
                                     <span className="absolute -top-3 -left-1 text-5xl text-cta font-serif opacity-20">“</span>
-                                    「1学年6名限定。私が全責任を持って担当します。小手先ではない、社会で通用する『本物の思考力』を養いましょう。」
+                                    「大学合格はゴールではなく通過点。アークカレッジでの日々が、社会に出た時の『自分の基準』になるような、一生モノの思考力をここで作り上げましょう。」
                                 </div>
                             </div>
                         </div>
