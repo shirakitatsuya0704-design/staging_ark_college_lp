@@ -17,27 +17,29 @@
                 extend: {
                     colors: {
                         navy: '#1e344a',
-                        cta: '#B45309',
+                        cta: '#B45309', 
                         'cta-light': '#D97706',
-                        'cta-glow': 'rgba(180, 83, 9, 0.5)',
-                        'navy-glow': 'rgba(30, 52, 74, 0.3)',
+                        'cta-glow': 'rgba(180, 83, 9, 0.3)', // 発光を抑えめに
+                        'navy-glow': 'rgba(30, 52, 74, 0.2)',
                     },
                     fontFamily: {
                         sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
                     },
                     boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.1)',
-                        'glow-cta': '0 20px 50px -10px rgba(180, 83, 9, 0.4)',
-                        'glow-card': '0 20px 40px -15px rgba(30, 52, 74, 0.15)',
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.05)',
+                        // リッチな階層構造を持つ影（AIっぽさを消す鍵）
+                        'rich': '0 10px 30px -5px rgba(30, 52, 74, 0.08), 0 4px 12px -2px rgba(30, 52, 74, 0.04)',
+                        'rich-hover': '0 20px 40px -5px rgba(30, 52, 74, 0.12), 0 8px 16px -4px rgba(30, 52, 74, 0.06)',
+                        'glow-cta': '0 10px 30px -5px rgba(180, 83, 9, 0.25)', // 控えめで上品な発光
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'shine': 'shine 3s infinite',
+                        'float': 'float 8s ease-in-out infinite', // 動きをゆっくりにして高級感を出す
+                        'shine': 'shine 6s infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
+                            '50%': { transform: 'translateY(-6px)' }, // 移動量を減らして上品に
                         },
                         shine: {
                             '0%': { transform: 'translateX(-100%) skewX(-15deg)' },
@@ -52,32 +54,49 @@
         body {
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
             -webkit-font-smoothing: antialiased;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.04em; /* 字間を広げて余裕を持たせる */
             color: #1e344a;
             background-color: #F8FAFC;
+            font-feature-settings: "palt"; /* 日本語の自動文字詰め */
         }
 
+        /* ノイズテクスチャを加えた背景（デジタル感を消す） */
         .bg-gradient-mesh {
-            background-color: #f8fafc;
+            background-color: #F8FAFC;
             background-image: 
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E"),
                 radial-gradient(at 0% 0%, rgba(180, 83, 9, 0.03) 0px, transparent 50%),
                 radial-gradient(at 100% 0%, rgba(30, 52, 74, 0.03) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(180, 83, 9, 0.03) 0px, transparent 50%);
+            background-attachment: fixed;
         }
 
+        /* ガラスパネルを「曇りガラス」から「上質なアクリル」風に */
         .glass-panel {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px); /* ぼかしを少し弱めてシャープに */
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+        }
+        
+        /* エッジライト効果 */
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            opacity: 0.6;
+            pointer-events: none;
         }
 
         .glass-panel-dark {
-            background: rgba(30, 52, 74, 0.7);
+            background: rgba(30, 52, 74, 0.9); /* 透明度を下げて重厚感を出す */
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .btn-shine {
@@ -88,12 +107,12 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -50%;
             width: 50%;
             height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-15deg);
-            animation: shine 4s infinite;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-20deg);
+            animation: shine 6s infinite;
         }
         
         .table-container {
@@ -118,22 +137,22 @@
         // --- Icons ---
         const CheckIcon = ({ className = "w-4 h-4" }) => (
             <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
             </svg>
         );
         const ZapIcon = ({ className = "w-4 h-4" }) => (
             <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
         );
         const ShieldIcon = ({ className = "w-4 h-4" }) => (
             <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
         );
         const TargetIcon = ({ className = "w-4 h-4" }) => (
             <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
         );
         const ArrowRightIcon = ({ className = "w-4 h-4" }) => (
@@ -159,16 +178,15 @@
             };
 
             return (
-                <div className="min-h-screen overflow-x-hidden text-navy">
+                <div className="min-h-screen overflow-x-hidden text-navy selection:bg-cta/20 selection:text-navy">
                     {/* Sticky Header */}
-                    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3 border-b border-navy/5' : 'bg-transparent py-5'}`}>
+                    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-rich py-3 border-b border-navy/5' : 'bg-transparent py-5'}`}>
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
                             <div className="flex items-center">
                                 <img src="logo.webp" alt="Ark College" className="h-7 w-auto drop-shadow-sm" />
                             </div>
-                            {/* CTA追加: デスクトップ用ヘッダーボタン */}
                             <div className="hidden sm:block">
-                                <button onClick={scrollToDiagnosis} className={`btn-shine text-xs font-bold px-6 py-2.5 rounded-full shadow-lg transition-all hover:-translate-y-0.5 ${isScrolled ? 'bg-cta text-white' : 'bg-white text-cta shadow-xl'}`}>
+                                <button onClick={scrollToDiagnosis} className={`btn-shine text-xs font-bold px-6 py-2.5 rounded-full transition-all hover:-translate-y-0.5 ${isScrolled ? 'bg-cta text-white shadow-md' : 'bg-white text-cta shadow-rich'}`}>
                                     無料相談を予約する
                                 </button>
                             </div>
@@ -183,9 +201,9 @@
                         </div>
 
                         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row lg:justify-end items-center lg:items-center h-full">
-                            <div className="w-full lg:w-[500px] mt-[35svh] lg:mt-0 lg:-ml-20 glass-panel rounded-[32px] p-6 sm:p-10 shadow-2xl transform transition-all hover:scale-[1.01] duration-700 border-t border-white">
+                            <div className="w-full lg:w-[500px] mt-[35svh] lg:mt-0 lg:-ml-20 glass-panel rounded-[32px] p-6 sm:p-10 shadow-rich transform transition-all hover:scale-[1.01] duration-700 border border-white/60">
                                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-cta/10 rounded-full blur-3xl animate-pulse"></div>
-                                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight mb-5 text-navy tracking-tight drop-shadow-sm">
+                                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-5 text-navy tracking-wider drop-shadow-sm">
                                     総合型選抜<br />
                                     最強のパートナー、<br />
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-navy to-cta decoration-cta decoration-2 underline-offset-4">Ark College</span>
@@ -193,7 +211,7 @@
                                 <div className="space-y-2.5 mb-6">
                                     {["第一志望合格率 86.7%", "添削回数 完全無制限", "48時間以内 返信確約"].map((text, i) => (
                                         <div key={i} className="flex items-center space-x-2.5 group">
-                                            <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gradient-to-br from-cta to-cta-light flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                                            <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gradient-to-br from-cta to-cta-light flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
                                                 <CheckIcon className="w-2.5 h-2.5 text-white" />
                                             </div>
                                             <span className="font-bold text-xs sm:text-sm text-navy/90 tracking-tight group-hover:text-cta transition-colors duration-300">{text}</span>
@@ -202,11 +220,11 @@
                                 </div>
                                 <div className="space-y-2">
                                     <div className="flex justify-center mb-1">
-                                        <span className="bg-red-600 text-white px-3 py-1 text-[10px] font-bold rounded-full shadow-md animate-pulse">
+                                        <span className="bg-red-600 text-white px-3 py-1 text-[10px] font-bold rounded-full shadow-sm animate-pulse">
                                             2026年度 新規受入 残りわずか / 1学年6名限定
                                         </span>
                                     </div>
-                                    <button onClick={scrollToDiagnosis} className="btn-shine w-full bg-gradient-to-r from-cta to-cta-light text-white text-sm sm:text-base font-bold py-3.5 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 tracking-wide">
+                                    <button onClick={scrollToDiagnosis} className="btn-shine w-full bg-gradient-to-r from-cta to-cta-light text-white text-sm sm:text-base font-bold py-3.5 rounded-xl shadow-glow-cta hover:shadow-rich-hover hover:-translate-y-0.5 transition-all duration-300 tracking-wide">
                                         とりあえず無料相談に申し込む
                                     </button>
                                     <div className="text-center space-y-0.5">
@@ -236,15 +254,15 @@
                                     { sub: "完全マンツーマン、\nプロ講師のみ", desc: "学生バイトは不在。プロ講師のみが担任として責任を持って向き合います。", icon: <ShieldIcon className="w-5 h-5" />, img: "Class_2.png" },
                                     { sub: "第一志望\n合格率 86.7%", desc: "難関大への圧倒的な実績。安心してお任せください。", icon: <TargetIcon className="w-5 h-5" />, img: "College.png" }
                                 ].map((card, idx) => (
-                                    <div key={idx} className="group relative bg-white rounded-[20px] p-2 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 border border-slate-100">
-                                        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white rounded-[20px] -z-10"></div>
+                                    <div key={idx} className="group relative bg-white rounded-[20px] p-2 shadow-rich hover:shadow-rich-hover transition-all duration-500 hover:-translate-y-1 border border-slate-200/60">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-slate-50/50 to-white rounded-[20px] -z-10"></div>
                                         <div className="h-36 overflow-hidden rounded-[16px] relative">
-                                            <div className="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition-all duration-500 z-10"></div>
+                                            <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-all duration-500 z-10"></div>
                                             <img src={card.img} alt={card.sub} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                         </div>
                                         <div className="p-4 relative">
                                             <div className="flex items-start gap-2.5 mb-2.5">
-                                                <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-cta shadow-inner group-hover:bg-cta group-hover:text-white transition-colors duration-300 border border-slate-100 flex-shrink-0">
+                                                <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-cta shadow-sm group-hover:bg-cta group-hover:text-white transition-colors duration-300 border border-slate-100 flex-shrink-0">
                                                     {card.icon}
                                                 </div>
                                                 <h3 className="text-base font-bold text-navy leading-snug pt-0.5">
@@ -270,7 +288,7 @@
 
                             <div className="grid md:grid-cols-2 gap-6">
                                 {/* Case 1 */}
-                                <div className="glass-panel p-6 sm:p-8 rounded-[24px] shadow-lg border-l-4 border-cta relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                                <div className="glass-panel p-6 sm:p-8 rounded-[24px] shadow-rich border-l-4 border-cta relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
                                     <div className="flex items-center justify-between mb-6">
                                         <div className="flex items-center gap-3">
                                             <img src="boy.png" alt="K.S.さん" className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" />
@@ -284,7 +302,7 @@
                                     
                                     <h3 className="text-lg sm:text-xl font-black text-navy mb-4">慶應義塾大学 法学部 FIT入試 合格</h3>
                                     
-                                    <div className="bg-slate-50 rounded-xl p-4 mb-4">
+                                    <div className="bg-slate-50 rounded-xl p-4 mb-4 border border-slate-100">
                                         <p className="text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-widest">Before</p>
                                         <div className="text-xs sm:text-sm font-medium text-slate-600 space-y-1">
                                             <div className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-slate-300"></span>評定平均 3.8 / 実績なし</div>
@@ -301,7 +319,7 @@
                                 </div>
 
                                 {/* Case 2 */}
-                                <div className="glass-panel p-6 sm:p-8 rounded-[24px] shadow-lg border-l-4 border-navy relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                                <div className="glass-panel p-6 sm:p-8 rounded-[24px] shadow-rich border-l-4 border-navy relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
                                     <div className="flex items-center justify-between mb-6">
                                         <div className="flex items-center gap-3">
                                             <img src="girl.png" alt="M.T.さん" className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" />
@@ -315,7 +333,7 @@
 
                                     <h3 className="text-lg sm:text-xl font-black text-navy mb-4">早稲田大学 国際教養学部 AO入試 合格</h3>
                                     
-                                    <div className="bg-slate-50 rounded-xl p-4 mb-4">
+                                    <div className="bg-slate-50 rounded-xl p-4 mb-4 border border-slate-100">
                                         <p className="text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-widest">Before</p>
                                         <div className="text-xs sm:text-sm font-medium text-slate-600 space-y-1">
                                             <div className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-slate-300"></span>海外経験あり / 英語力あり</div>
@@ -332,7 +350,6 @@
                                 </div>
                             </div>
 
-                            {/* CTA追加: ケーススタディを見て意欲が高まったユーザー向け */}
                             <div className="mt-10 text-center">
                                 <button onClick={scrollToDiagnosis} className="inline-flex items-center gap-2 text-navy font-bold text-sm border-b-2 border-cta pb-0.5 hover:text-cta transition-colors">
                                     <span>自分だけの合格戦略を作成する</span>
@@ -353,10 +370,10 @@
 
                             <div className="grid md:grid-cols-2 gap-6 items-stretch">
                                 {/* Bad Example */}
-                                <div className="bg-slate-50 rounded-[24px] p-6 shadow-sm border border-slate-200 grayscale relative">
+                                <div className="bg-slate-50 rounded-[24px] p-6 shadow-inner border border-slate-200 grayscale relative">
                                     <div className="absolute top-4 left-4 bg-slate-300 text-slate-700 px-3 py-1 rounded-full text-[10px] font-bold">Before：感想文</div>
                                     <div className="mt-8 space-y-4">
-                                        <div className="bg-white p-4 rounded-xl rounded-tl-none text-xs text-slate-700 leading-relaxed border border-slate-200">
+                                        <div className="bg-white p-4 rounded-xl rounded-tl-none text-xs text-slate-700 leading-relaxed border border-slate-200 shadow-sm">
                                             <p className="font-bold mb-1 text-[10px] text-slate-600">志望理由：</p>
                                             「私は海辺の街で育ちました。最近海が汚れているのを見て悲しくなりました。だから私は海をきれいにするために、この大学で環境学を学びたいです。」
                                         </div>
@@ -365,10 +382,10 @@
                                 </div>
 
                                 {/* Ark College Example */}
-                                <div className="bg-white rounded-[24px] p-6 shadow-xl border-2 border-cta relative overflow-hidden">
+                                <div className="bg-white rounded-[24px] p-6 shadow-rich border-2 border-cta relative overflow-hidden">
                                     <div className="absolute top-4 left-4 bg-cta text-white px-3 py-1 rounded-full text-[10px] font-bold">After：論理的構成</div>
                                     <div className="mt-8 space-y-4">
-                                        <div className="bg-red-50 p-4 rounded-xl rounded-tl-none text-xs text-navy border border-red-100 relative leading-relaxed">
+                                        <div className="bg-red-50 p-4 rounded-xl rounded-tl-none text-xs text-navy border border-red-100 relative leading-relaxed shadow-sm">
                                             <p className="font-bold text-red-600 mb-1 text-[10px]">Structure & Logic</p>
                                             <p>「産業構造の変化による排水問題が、深刻な漁業被害をもたらしています。この<span className="font-bold border-b border-red-300 bg-red-100/50">構造的な課題</span>に対し、貴学の△△教授のもと<span className="font-bold border-b border-red-300 bg-red-100/50">経済学の観点</span>から解決策を提示したい。」</p>
                                         </div>
@@ -407,7 +424,7 @@
                                         <div className="relative z-10 rounded-[20px] overflow-hidden shadow-2xl border border-white/10 rotate-2 transition-transform hover:rotate-0 duration-500 h-[300px] sm:h-[400px] lg:h-[500px]">
                                             <img src="student_1.png" alt="Student studying" className="w-full h-full object-cover object-center scale-125 grayscale hover:grayscale-0 transition-all duration-700" />
                                         </div>
-                                        <div className="absolute -bottom-5 -left-5 bg-cta text-white p-5 rounded-[16px] shadow-glow-cta z-20 hidden sm:block border border-white/20">
+                                        <div className="absolute -bottom-5 -left-5 bg-cta text-white p-5 rounded-[16px] shadow-rich z-20 hidden sm:block border border-white/20">
                                             <p className="font-bold text-sm leading-tight">代表による、<br />完全直接指導</p>
                                         </div>
                                     </div>
@@ -421,7 +438,7 @@
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
                             <div className="w-full md:w-1/2 relative">
                                 <div className="absolute inset-0 bg-gradient-to-tr from-cta to-navy rounded-[24px] transform rotate-3 opacity-10"></div>
-                                <div className="relative z-10 rounded-[20px] shadow-xl mx-auto w-full overflow-hidden border border-slate-100 h-[400px] sm:h-[500px]">
+                                <div className="relative z-10 rounded-[20px] shadow-rich mx-auto w-full overflow-hidden border border-slate-100 h-[400px] sm:h-[500px]">
                                     <img src="president.png" alt="Noah M." className="w-full h-full object-cover object-top scale-125 grayscale hover:grayscale-0 transition-all duration-700" />
                                 </div>
                             </div>
@@ -447,11 +464,10 @@
                                         <p className="text-slate-500 text-xs font-medium">市場分析・戦略立案のプロによる論理的指導</p>
                                     </div>
                                 </div>
-                                <div className="glass-panel p-5 rounded-xl italic text-navy leading-relaxed relative text-sm sm:text-base font-bold shadow-md border-l-0 border-r-0 border-t-0 border-b-4 border-cta/20">
+                                <div className="glass-panel p-5 rounded-xl italic text-navy leading-relaxed relative text-sm sm:text-base font-bold shadow-sm border-l-0 border-r-0 border-t-0 border-b-4 border-cta/20">
                                     <span className="absolute -top-3 -left-1 text-5xl text-cta font-serif opacity-20">“</span>
                                     「大学合格はゴールではなく通過点。アークカレッジでの日々が、社会に出た時の『自分の基準』になるような、一生モノの思考力をここで作り上げましょう。」
                                 </div>
-                                {/* CTA追加: 代表メッセージ下 */}
                                 <div className="mt-6 text-center md:text-left">
                                      <button onClick={scrollToDiagnosis} className="inline-flex items-center justify-center px-6 py-3 border border-navy text-navy rounded-full font-bold text-sm hover:bg-navy hover:text-white transition-all duration-300">
                                         Noah先生との無料相談へ
@@ -466,7 +482,7 @@
                          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                             <div className="text-center mb-10">
                                 <h2 className="text-2xl sm:text-3xl font-serif font-bold mb-6 text-navy tracking-tight">合格の、その先を見据えて。</h2>
-                                <div className="bg-white p-8 rounded-[24px] shadow-sm text-left">
+                                <div className="bg-white p-8 rounded-[24px] shadow-rich text-left border border-slate-200/50">
                                     <p className="text-sm sm:text-base font-medium text-slate-700 leading-loose mb-6">
                                             大学受験はゴールではありません。AI時代、社会で求められるのは偏差値ではなく「自ら問いを立て、論理的に解決する力」です。<br/><br/>
                                             Ark Collegeの指導は、単なる受験テクニックにとどまりません。外資系マーケター出身の講師との対話を通じて養われる<strong className="text-navy bg-cta/10 px-1">「論理的思考力（ロジカルシンキング）」と「表現力」</strong>は、大学入学後、そして就職活動や社会に出た後も、お子様を支え続ける「一生モノの資産」となります。
@@ -490,7 +506,7 @@
                                 <p className="text-slate-500 text-sm sm:text-lg font-bold">透明性の高い、シンプルな料金体系。</p>
                             </div>
                             
-                            <div className="glass-panel rounded-[24px] overflow-hidden shadow-xl border border-white table-container">
+                            <div className="glass-panel rounded-[24px] overflow-hidden shadow-rich border border-white table-container">
                                 <table className="w-full border-collapse">
                                     <thead>
                                         <tr className="border-b border-slate-200 bg-white/50">
@@ -531,11 +547,10 @@
                                 </table>
                             </div>
 
-                            <div className="mt-10 bg-white border border-cta/20 p-6 rounded-[20px] text-center shadow-lg relative overflow-hidden group">
+                            <div className="mt-10 bg-white border border-cta/20 p-6 rounded-[20px] text-center shadow-rich relative overflow-hidden group">
                                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cta to-cta-light"></div>
                                 <p className="text-cta font-bold text-xs sm:text-sm mb-1.5 tracking-widest uppercase">Special Offer</p>
                                 <p className="text-navy font-bold text-base sm:text-xl leading-tight">診断当日・翌日の入会決定で、<br />入会金 55,000円 → <span className="text-cta text-2xl sm:text-3xl font-black ml-2 inline-block">0円</span></p>
-                                {/* CTA追加: 特典ボックス内 */}
                                 <button onClick={scrollToDiagnosis} className="mt-4 bg-cta/10 text-cta border border-cta/30 font-bold py-2 px-8 rounded-full text-sm hover:bg-cta hover:text-white transition-all duration-300">
                                     今すぐ申し込む
                                 </button>
@@ -573,7 +588,7 @@
                                         title: "【代表インタビュー】なぜ、アークカレッジは「1学年6名」しか引き受けないのか？ 合格の先を見据えるプロが「厳選」にこだわる真意"
                                     }
                                 ].map((item, idx) => (
-                                    <a key={idx} href={item.url} target="_blank" rel="noopener" className="group block bg-white rounded-[20px] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-slate-100">
+                                    <a key={idx} href={item.url} target="_blank" rel="noopener" className="group block bg-white rounded-[20px] overflow-hidden shadow-rich hover:shadow-rich-hover transition-all duration-300 hover:-translate-y-1 border border-slate-100/50">
                                         <div className="aspect-video w-full overflow-hidden">
                                             <img src={item.img} alt="記事サムネイル" loading="lazy" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                                         </div>
@@ -632,7 +647,7 @@
                                         <label className="block text-sm font-bold text-navy">在籍高校名 <span className="text-cta ml-1 text-[9px]">必須</span></label>
                                         <input type="text" name="highschool" className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-cta focus:ring-2 focus:ring-cta/20 outline-none transition-all" placeholder="例：〇〇高等学校" required />
                                     </div>
-                                    <button type="submit" className="btn-shine w-full bg-gradient-to-r from-cta to-cta-light text-white text-base sm:text-lg font-bold py-4 rounded-xl shadow-glow-cta hover:shadow-2xl hover:-translate-y-0.5 transition-all mt-4 tracking-wide">
+                                    <button type="submit" className="btn-shine w-full bg-gradient-to-r from-cta to-cta-light text-white text-base sm:text-lg font-bold py-4 rounded-xl shadow-glow-cta hover:shadow-rich-hover hover:-translate-y-0.5 transition-all mt-4 tracking-wide">
                                         この内容で送信する
                                     </button>
                                 </form>
@@ -661,7 +676,7 @@
 
                     {/* Mobile Sticky CTA */}
                     <div className="fixed bottom-0 left-0 right-0 z-50 p-2 sm:hidden bg-white/90 backdrop-blur-md border-t border-slate-200">
-                        <button onClick={scrollToDiagnosis} className="btn-shine w-full bg-gradient-to-r from-cta to-cta-light text-white font-bold py-2.5 rounded-lg shadow-lg active:scale-95 transition-all flex items-center justify-center">
+                        <button onClick={scrollToDiagnosis} className="btn-shine w-full bg-gradient-to-r from-cta to-cta-light text-white font-bold py-2.5 rounded-lg shadow-glow-cta active:scale-95 transition-all flex items-center justify-center">
                             <span className="text-xs tracking-tight">無料合格可能性診断を予約</span>
                         </button>
                     </div>
